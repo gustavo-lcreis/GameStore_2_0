@@ -1,0 +1,26 @@
+:host { display: block; }
+
+.rodape { background: #212529; padding: 0 2rem; }
+
+.rodape__interno {
+  max-width: 1200px; margin: 0 auto; padding: 1.75rem 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  border-top: 1px solid #495057;
+  color: #adb5bd; font-size: 1.1rem;
+}
+
+.rodape__marca { display: flex; align-items: center; gap: .6rem; }
+.rodape__logo {
+  width: 28px; height: 28px; display: grid; place-items: center;
+  background: #adb5bd; color: #212529; border-radius: 7px;
+  font-weight: 700; font-size: 1rem;
+}
+
+.rodape__redes { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+.rodape__redes a { color: #adb5bd; display: block; }
+.rodape__redes a:hover { color: #fff; }
+
+@media (max-width: 600px) {
+  .rodape { padding: 0 1rem; }
+  .rodape__interno { justify-content: center; }
+}

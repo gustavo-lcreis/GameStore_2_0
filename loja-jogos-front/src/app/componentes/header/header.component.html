@@ -1,0 +1,28 @@
+<header class="cabecalho">
+  <div class="cabecalho__interno">
+    <a routerLink="/catalogo" class="marca" aria-label="GameStore, página inicial">
+      <span class="marca__logo" aria-hidden="true">G</span>
+      <span class="marca__nome">GameStore</span>
+    </a>
+
+    <nav class="menu" aria-label="Navegação principal">
+      <a routerLink="/catalogo" routerLinkActive="ativo">Catálogo</a>
+      <a routerLink="/carrinho" routerLinkActive="ativo">Carrinho ({{ cart.quantidadeTotal() }})</a>
+      @if (auth.logado()) {
+        <a routerLink="/pedidos" routerLinkActive="ativo">Meus pedidos</a>
+      }
+      @if (auth.admin()) {
+        <a routerLink="/admin" routerLinkActive="ativo">Administração</a>
+      }
+    </nav>
+
+    <div class="acoes">
+      @if (auth.logado()) {
+        <button type="button" class="botao botao--contorno" (click)="sair()">Sair</button>
+      } @else {
+        <a routerLink="/login" class="botao botao--contorno">Login</a>
+        <a routerLink="/registro" class="botao botao--cheio">Sign-up</a>
+      }
+    </div>
+  </div>
+</header>

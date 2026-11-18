@@ -1,0 +1,31 @@
+<section>
+  <div class="titulo">
+    <h1>Jogos em destaque</h1>
+    <a routerLink="/catalogo" class="ver-todos">Ver catálogo completo</a>
+  </div>
+
+  @if (aviso()) { <p class="aviso">{{ aviso() }}</p> }
+
+  @if (jogos().length === 0 && !aviso()) {
+    <p class="vazio">Nenhum jogo cadastrado ainda.</p>
+  }
+
+  <div class="grade">
+    @for (j of jogos(); track j.id) {
+      <article class="jogo">
+        <a [routerLink]="['/jogo', j.id]" class="jogo__link">
+          <div class="jogo__capa" [style.background-image]="j.imagem ? 'url(' + j.imagem + ')' : null">
+            <div class="jogo__capa" [style.background-image]="j.imagem | capaCss">
+            @if (!j.imagem) { <span>{{ j.titulo.charAt(0) }}</span> }
+          </div>
+          <h2 class="jogo__titulo">{{ j.titulo }}</h2>
+        </a>
+        <p class="jogo__meta">{{ j.plataforma }}{{ j.categoria ? ' · ' + j.categoria.nome : '' }}</p>
+        <div class="jogo__rodape">
+          <strong>{{ j.preco | currency:'BRL' }}</strong>
+          <button type="button" class="jogo__botao" (click)="cart.adicionar(j)">Adicionar</button>
+        </div>
+      </article>
+    }
+  </div>
+</section>
